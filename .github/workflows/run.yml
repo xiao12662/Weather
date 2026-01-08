@@ -3,8 +3,8 @@ name: DailyWeatherBot
 on:
   push: # 每次你上传代码时跑一次
   schedule:
-    - cron: '30 23 * * *' # 北京时间每天早上 07:30 运行 (UTC 23:30)
-
+    - cron: '20 00 * * *' # 30 23 改成 20 00，代表北京时间 08:20
+   
 jobs:
   run_bot:
     runs-on: ubuntu-latest
