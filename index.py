@@ -32,9 +32,8 @@ def main():
         requests.get(f"https://api.day.app/{bark_key}/{title}/{content}")
         print("推送成功！")
     else:
-        # 为了测试方便，晴天也可以发个简单的通知（测试完可以删掉这行）
-        requests.get(f"https://api.day.app/{bark_key}/天气日报/今日天气晴好，气温{temp}度☀️")
         print("今天不会下雨喔！")
 
 if __name__ == "__main__":
+
     main()
