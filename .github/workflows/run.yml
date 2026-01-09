@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   schedule:
     # 北京时间 12:02 = UTC 04:02
-    - cron: '15 06 * * *'
+    - cron: '16 00 * * *'
   workflow_dispatch: # 保留这个，如果你现在想立刻看效果，就在 Actions 页面点按钮
    
 jobs:
