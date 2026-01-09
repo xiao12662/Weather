@@ -18,22 +18,22 @@ def main():
     code = weather['weathercode']
     temp = weather['temperature']
     
-    # 获取你在 GitHub Secrets 中配置的 Bark Key (为了安全，不直接写在代码里)
-    bark_key = os.getenv('BARK_KEY')
-    
-    if not bark_key:
-        print("未检测到 BARK_KEY，请在 Settings -> Secrets 中配置")
-        return
+    # 简单的代码转文字逻辑
+    weather_text = "晴朗" if code == 0 else "多云/阴天"
+    if code >= 51: weather_text = "雨雪天气☔"
 
-    # 逻辑：只要是雨天或雪天 (code >= 51) 就推送
-    if code >= 51:
-        title = "天气预警☔"
-        content = f"要下雨了，气温{temp}度，出门记得带伞！"
-        requests.get(f"https://api.day.app/{bark_key}/{title}/{content}")
-        print("推送成功！")
-    else:
-        print("今天不会下雨喔！")
+    bark_key = os.getenv('BARK_KEY')
+    if not bark_key: return
+
+    # 修改这里：取消 if code >= 51 的限制，改为每天推送
+    title = f"今日天气报：{weather_text}"
+    content = f"当前气温 {temp}℃。出门请留意！"
+    
+    # 发送请求
+    requests.get(f"https://api.day.app/{bark_key}/{title}/{content}")
+    print(f"推送成功：{title}")
 
 if __name__ == "__main__":
 
     main()
+
