@@ -1,9 +1,12 @@
 name: DailyWeatherBot
 
 on:
-  push: # 每次你上传代码时跑一次
+  push:
+    branches: [ main ]
   schedule:
-    - cron: '20 00 * * *' # 30 23 改成 20 00，代表北京时间 08:20
+    # 建议把 08:20 改成一个“避开高峰”的时间
+    # 比如 08:27 (UTC 00:27)，避开所有人在 00, 10, 20 分钟的拥堵
+    - cron: '17 00 * * *'
    
 jobs:
   run_bot:
